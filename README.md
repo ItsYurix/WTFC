@@ -72,3 +72,7 @@ When using the "," command, the sum depending on the pressed keys is entered int
 ## EASIER PROGRAMMING, ".mto"
 1. For simpler programming, you can use MulToOne.exe which is located in a folder with files, this program removes comments starting with semicolon, and also allows you to write on various lines, using indents. In order to compile a file, you need to run this program and then enter the name of the file, you do not need to enter the full path, the file must have the extension ".mto".
 2. You can also use syntax highlighting for Notepad++, which is located in the Files folder.
+
+
+### Links:
+Itch.io: https://itsyurix.itch.io/wtfc
