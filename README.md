@@ -2,7 +2,7 @@
 WTFC - minimalistic 8-bit console that works f\*ck knows how and uses BrainF\*ck as a programming language.
 
 Inspired by:
-- [BrainF*ckConsole74](https://brainfuckconsole74.ch/) by AndOr
+- [BrainF\*ckConsole74](https://brainfuckconsole74.ch/) by AndOr
 - [4BOD](https://puarsliburf.itch.io/4bod-fantaly-console) by puarsliburf
 
 
@@ -17,7 +17,7 @@ Inspired by:
 
 
 ## RAM
-2. There are 256 memory cells in RAM, each of which is an 8-bit number, from 0 to 255.
+1. There are 256 memory cells in RAM, each of which is an 8-bit number, from 0 to 255.
 2. If you increase the cell with a value of 255, it will be 0.
 2. If you decrease the cell with a value of 0, it will be 255.
 2. If you move to the left from the cell number 0, you will get into the cell number 255.
@@ -28,8 +28,8 @@ Inspired by:
  
  
 ## OUTPUT, SCREEN
-3. Screen is 20x15(4:3), 2-bit.
-3. The screen supports 4 colors: black, dark gray, light gray, white.
+1. Screen is 20x15(4:3), 2-bit.
+2. The screen supports 4 colors: black, dark gray, light gray, white.
 3. When using the "." command, the color is displayed based on the remainder of dividing the cell value by 4.
  
 
@@ -47,10 +47,10 @@ When using the "," command, the sum depending on the pressed keys is entered int
 
 ## PROGRAMMING LANGUAGE, BRAINF\*CK
 5. Basics:
-- +   increases current cell value
-- -   decreases current cell value
-- <   decreases memory pointer
-- >   increases memory pointer
+- \+   increases current cell value
+- \-   decreases current cell value
+- \<   decreases memory pointer
+- \>   increases memory pointer
 - \[   while value in current memory cell != 0
 - \]   end while
 - .   draws on screen current cell value
@@ -61,12 +61,12 @@ When using the "," command, the sum depending on the pressed keys is entered int
 - \[<\]                 moves left while cell not equals 0
 - \[>\]                 moves right while cell not equals 0
 - \[>+>+<<-\]>>\[<<+>>-\] copies value to next cell
-- +>+\[<+>-\]           summation
-- +>+\[<->-\]           substraction
-- +\[>+++<-\]           multiplication
-- +\[>---<-\]           division
+- \+>+\[<+>-\]           summation
+- \+>+\[<->-\]           substraction
+- \+\[>+++<-\]           multiplication
+- \+\[>---<-\]           division
 5. If Statement:
-- +++++\[>>+>+<<<-\]>>>\[<<<+>>>-\]>+<<\[-----\[>\]\]>>\[<<<+++>>>\[-\]\]
+- \+++++\[>>+>+<<<-\]>>>\[<<<+>>>-\]>+<<\[-----\[>\]\]>>\[<<<+++>>>\[-\]\]
 
 
 ## EASIER PROGRAMMING, ".mto"
