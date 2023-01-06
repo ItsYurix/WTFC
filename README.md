@@ -6,7 +6,7 @@ Inspired by:
  • [4BOD](https://puarsliburf.itch.io/4bod-fantaly-console) by puarsliburf
 
 
-##PROGRAM, "DISK"
+## PROGRAM, "DISK"
  • 1.1 4096 commands/characters can be used in any program.
  • 1.2 All characters except < > , . [ ] + - are ignored by
          the interpreter, but take up space in memory.
@@ -20,7 +20,7 @@ Inspired by:
          of clamped keys.
 
 
-##RAM
+## RAM
  • 2.1 There are 256 memory cells in RAM, each of which is an
          8-bit number, from 0 to 255.
  • 2.2 Never... ;(
@@ -38,14 +38,14 @@ Inspired by:
  • 2.9 Cell 255 sets to zero every frame.
  
  
-##OUTPUT, SCREEN
+## OUTPUT, SCREEN
  • 3.1 Screen is 20x15(4:3), 2-bit.
  • 3.2 The screen supports 4 colors: black, dark gray, light gray, white.
  • 3.3 When using the "." command, the color is displayed based
          on the remainder of dividing the cell value by 4.
  
 
-##INPUT, KEYBOARD
+## INPUT, KEYBOARD
  • 4.1 When using the "," command, the sum depending on the pressed keys
          is entered into the cell.
        128 - down arrow
@@ -58,7 +58,7 @@ Inspired by:
        1 - X
 
 
-##PROGRAMMING LANGUAGE, BRAINF*CK
+## PROGRAMMING LANGUAGE, BRAINF*CK
  • 5.1 Basics:
     +   increases current cell value
     -   decreases current cell value
@@ -82,7 +82,7 @@ Inspired by:
     +++++[>>+>+<<<-]>>>[<<<+>>>-]>+<<[-----[>]]>>[<<<+++>>>[-]]
 
 
-##EASIER PROGRAMMING, ".mto"
+## EASIER PROGRAMMING, ".mto"
  • 6.1 For simpler programming, you can use MulToOne.exe which
          is located in a folder with files, this program removes
          comments starting with semicolon, and also allows you
