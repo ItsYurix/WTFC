@@ -58,7 +58,7 @@ When using the "," command, the sum depending on the pressed keys is entered int
 - .   draws on screen current cell value
 - ,   gets input from keyboard
 ```
-3. Tricks:
+2. Tricks:
 ```brainfuck
 - [-]                 sets current value to 0
 - [>+<-]              moves value to next cell
@@ -70,7 +70,7 @@ When using the "," command, the sum depending on the pressed keys is entered int
 - +[>+++<-]           multiplication
 - +[>---<-]           division
 ```
-5. If Statement:
+3. If Statement:
 ```brainfuck
 - +++++[>>+>+<<<-]>>>[<<<+>>>-]>+<<[-----[>]]>>[<<<+++>>>[-]]
 ```
