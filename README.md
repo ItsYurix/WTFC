@@ -47,7 +47,8 @@ When using the "," command, the sum depending on the pressed keys is entered int
 
 
 ## PROGRAMMING LANGUAGE, BRAINF\*CK
-1. Basics: ```
+1. Basics:
+```brainfuck
 - \+   increases current cell value
 - \-   decreases current cell value
 - \<   decreases memory pointer
@@ -55,8 +56,10 @@ When using the "," command, the sum depending on the pressed keys is entered int
 - \[   while value in current memory cell != 0
 - \]   end while
 - .   draws on screen current cell value
-- ,   gets input from keyboard ```
-3. Tricks: ```
+- ,   gets input from keyboard
+```
+3. Tricks:
+```brainfuck
 - \[-\]                 sets current value to 0
 - \[>+<-\]              moves value to next cell
 - \[<\]                 moves left while cell not equals 0
@@ -65,9 +68,12 @@ When using the "," command, the sum depending on the pressed keys is entered int
 - \+>+\[<+>-\]           summation
 - \+>+\[<->-\]           substraction
 - \+\[>+++<-\]           multiplication
-- \+\[>---<-\]           division ```
-4. If Statement: ```
-- \+++++\[>>+>+<<<-\]>>>\[<<<+>>>-\]>+<<\[-----\[>\]\]>>\[<<<+++>>>\[-\]\] ```
+- \+\[>---<-\]           division
+```
+5. If Statement:
+```brainfuck
+- \+++++\[>>+>+<<<-\]>>>\[<<<+>>>-\]>+<<\[-----\[>\]\]>>\[<<<+++>>>\[-\]\]
+```
 
 
 ## EASIER PROGRAMMING, BFML
