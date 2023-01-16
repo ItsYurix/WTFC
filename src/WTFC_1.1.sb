@@ -1,0 +1,199 @@
+'WTFC
+
+'SPEEDUP
+LDUtilities.ForceInvoke = 1
+LDUtilities.UseDispatcher = "True"
+LDUtilities.UseExpression = "True"
+
+MyPath = Program.Directory
+ProgramMemoryPath = MyPath + "\Memory.bf"
+
+GraphicsWindow.BrushColor = "#FFFFFF" 
+'FPS = 0
+'FPSCounter = Shapes.AddText(FPS)
+'Shapes.Move(FPSCounter,5,5)
+
+GraphicsWindow.BackgroundColor = "#000000"
+GraphicsWindow.Width = 640 - 10
+GraphicsWindow.Height = 480 - 10
+GraphicsWindow.Title = "WTFC"
+GraphicsWindow.Top = Desktop.Height / 2 - 240
+GraphicsWindow.Left = Desktop.Width / 2 - 320
+GraphicsWindow.BrushColor = "#111111"
+LDGraphicsWindow.Resize = 0
+
+CurrentProgram = 0
+
+again:
+
+WindowWidth = 32
+WindowHeight = 24
+
+Screen = "Screen"
+Screen2 = "Screen2"
+ScreenPointer = 1
+
+ProgramMemory = Text.GetSubText(File.ReadLine(ProgramMemoryPath,CurrentProgram + 1),1,4096)
+
+LDList.Clear(Screen)
+For i=1 To WindowWidth * WindowHeight
+  LDList.Add(Screen,0)
+EndFor
+
+LDList.Clear(Screen2)
+For i=1 To WindowWidth * WindowHeight
+  LDList.Add(Screen2,0)
+EndFor
+
+For i=0 To 255
+  Memory[i] = 0
+EndFor
+Memory[254] = CurrentProgram
+
+For i=1 To Text.GetLength(ProgramMemory)
+  Command = Text.GetSubText(ProgramMemory,i,1)
+  If Command = "[" Then
+    Stack.PushValue("wnz",i)
+    Stack.PushValue("wnz",i)
+  ElseIf Command = "]" Then
+    Brackets[i] = Stack.PopValue("wnz")
+    Brackets[Stack.PopValue("wnz")] = i
+  EndIf
+EndFor
+
+'Timer.Interval = 1000
+'Timer.Resume()
+'Timer.Tick = Tick
+
+'Sub Tick
+'  Shapes.SetText(FPSCounter,FPS)
+'  FPS = 0
+'EndSub
+
+Whiles = 0
+point = 0
+While "True"
+  Memory[255] = 0
+  KeyDown()
+  For i=1 To Text.GetLength(ProgramMemory)
+    Command = Text.GetSubText(ProgramMemory,i,1)
+    If Command = "+" Then
+      Memory[point] = Memory[point] + 1
+      If Memory[point] = 256 Then
+        Memory[point] = 0
+      EndIf
+    ElseIf Command = "-" Then
+      Memory[point] = Memory[point] - 1
+      If Memory[point] = -1 Then
+        Memory[point] = 255
+      EndIf
+    ElseIf Command = "<" Then
+      point = point - 1
+      If point = -1 Then
+        point = 255
+      EndIf
+    ElseIf Command = ">" Then
+      point = point + 1
+      If point = 256 Then
+        point = 0
+      EndIf
+    ElseIf Command = "[" Then
+      If Memory[point] = 0 Then
+        i = Brackets[i]
+      EndIf
+    ElseIf Command = "]" Then
+      If Memory[point] <> 0 Then
+        i = Brackets[i]
+      EndIf
+    ElseIf Command = "." Then
+      LDList.SetAt(Screen2,ScreenPointer,Math.Remainder(Memory[point],4))
+      ScreenPointer = ScreenPointer + 1
+      If ScreenPointer = WindowWidth * WindowHeight + 1 Then
+        ScreenPointer = 1
+      EndIf
+    ElseIf Command = "," Then
+      Memory[point] = Input
+    EndIf
+  EndFor
+  
+  'SCREEN
+  LDGraphicsWindow.PauseUpdates()
+  For i=1 To WindowHeight
+    For j=1 To WindowWidth
+      If LDList.GetAt(Screen,(i-1) * WindowWidth + j) <> LDList.GetAt(Screen2,(i-1) * WindowWidth + j) Then
+        LDList.SetAt(Screen,(i-1) * WindowWidth + j,LDList.GetAt(Screen2,(i-1) * WindowWidth + j))
+        Color = LDMath.Decimal2Base(LDList.GetAt(Screen,(i-1) * WindowWidth + j) * 75,16)
+        GraphicsWindow.BrushColor = "#" + Color + Color + Color
+        GraphicsWindow.FillRectangle((j-1) * GraphicsWindow.Width / WindowWidth,(i-1) * GraphicsWindow.Height / WindowHeight,GraphicsWindow.Width / WindowWidth,GraphicsWindow.Height / WindowHeight)
+      EndIf
+    EndFor
+  EndFor
+  LDGraphicsWindow.ResumeUpdates()
+  
+  If Memory[254] <> CurrentProgram Then
+    If Memory[254] < 16 Then
+      CurrentProgram = Memory[254]
+      Goto again
+    Else
+      Program.End()
+    EndIf
+  EndIf
+  
+  If Memory[253] = 0 Then
+    WindowWidth = 32
+    WindowHeight = 24
+  Else
+    WindowWidth = 16
+    WindowHeight = 12
+  EndIf
+  
+  If Memory[252] = 0 Then
+    LDStopwatch.DelayUpTo(4)
+  EndIf
+  
+  'FPS = FPS + 1
+EndWhile  
+  
+Sub KeyDown
+  If LDUtilities.KeyDown("Down")Then
+    Input = "1"
+  Else
+    Input = "0"
+  EndIf
+  If LDUtilities.KeyDown("Up") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("Right") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("Left") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("Space") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("Return") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("Z") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  If LDUtilities.KeyDown("X") Then
+    Input = Text.Append(Input,"1")
+  Else
+    Input = Text.Append(Input,"0")
+  EndIf
+  Input = LDMath.Base2Decimal(Input,2)
+EndSub

@@ -1,0 +1,38 @@
+'WordToFuck
+'Made by Yurix
+
+TextWindow.Write("File: ")
+OpenFile = TextWindow.Read()
+OpenFile = Program.Directory + "\bf\" + OpenFile + ".bf"
+TextWindow.Write("Program: ")
+TheProgram = TextWindow.Read()
+
+Line = 0
+TheLine = 1
+Export = ""
+
+For j=1 To 4096
+  Line = File.ReadLine(OpenFile,TheLine)
+  
+  'NO SPACES BEFORE
+  While Text.StartsWith(Line," ") or Text.StartsWith(Line,"	")
+    Line = Text.GetSubTextToEnd(Line,2)
+  EndWhile
+  
+  'NO COMMENTS
+  If Text.GetIndexOf(Line,"#") > 0 Then
+    Line = Text.GetSubText(Line,1,Text.GetIndexOf(Line,"#") - 1)
+  EndIf
+  
+  'NO SPACE AFTER
+  While Text.EndsWith(Line," ") or Text.EndsWith(Line,"	")
+    Line = Text.GetSubText(Line,1,Text.GetLength(Line) - 1)
+  EndWhile
+  
+  Export = Export + Line
+  TheLine = TheLine + 1
+EndFor
+
+File.WriteLine(Program.Directory + "\Memory.bf",LDMath.Base2Decimal(TheProgram,16) + 1,Export)
+
+Program.End()
