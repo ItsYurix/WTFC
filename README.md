@@ -49,30 +49,30 @@ When using the "," command, the sum depending on the pressed keys is entered int
 ## PROGRAMMING LANGUAGE, BRAINF\*CK
 1. Basics:
 ```brainfuck
-- \+   increases current cell value
-- \-   decreases current cell value
-- \<   decreases memory pointer
-- \>   increases memory pointer
-- \[   while value in current memory cell != 0
-- \]   end while
+- +   increases current cell value
+- -   decreases current cell value
+- <   decreases memory pointer
+- >   increases memory pointer
+- [   while value in current memory cell != 0
+- ]   end while
 - .   draws on screen current cell value
 - ,   gets input from keyboard
 ```
 3. Tricks:
 ```brainfuck
-- \[-\]                 sets current value to 0
-- \[>+<-\]              moves value to next cell
-- \[<\]                 moves left while cell not equals 0
-- \[>\]                 moves right while cell not equals 0
-- \[>+>+<<-\]>>\[<<+>>-\] copies value to next cell
-- \+>+\[<+>-\]           summation
-- \+>+\[<->-\]           substraction
-- \+\[>+++<-\]           multiplication
-- \+\[>---<-\]           division
+- [-]                 sets current value to 0
+- [>+<-]              moves value to next cell
+- [<]                 moves left while cell not equals 0
+- [>]                 moves right while cell not equals 0
+- [>+>+<<-]>>[<<+>>-] copies value to next cell
+- +>+[<+>-]           summation
+- +>+[<->-]           substraction
+- +[>+++<-]           multiplication
+- +[>---<-]           division
 ```
 5. If Statement:
 ```brainfuck
-- \+++++\[>>+>+<<<-\]>>>\[<<<+>>>-\]>+<<\[-----\[>\]\]>>\[<<<+++>>>\[-\]\]
+- +++++[>>+>+<<<-]>>>[<<<+>>>-]>+<<[-----[>]]>>[<<<+++>>>[-]]
 ```
 
 
